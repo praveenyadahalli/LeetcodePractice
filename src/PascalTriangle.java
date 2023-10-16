@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class PascalTriangle {
     public static void main(String[] args) {
-        int rowIndex=3;
+        int rowIndex=4;
         for (int i:getRow(rowIndex)){
             System.out.println(i);
         }
