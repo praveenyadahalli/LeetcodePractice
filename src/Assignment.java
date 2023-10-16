@@ -1,10 +1,9 @@
-import  java.util.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-public class Main {
+public class Assignment {
 
     public static void main(String[] args) {
         String inputFile = "C:\\Users\\Praveen\\Downloads\\assignment\\input_data.txt";
