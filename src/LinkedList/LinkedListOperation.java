@@ -45,20 +45,4 @@ class LinkedListOperation {
         // The new head of the reversed list is the previous pointer
         return prev;
     }
-    Node reverse(Node node)
-    {
-        Node prev = null;
-        Node current = node;
-        Node next = null;
-        while (current != null) {
-            next = current.next;//save the next node
-            current.next = prev;//reverse the link
-
-            //move pointers one position ahead
-            prev = current;
-            current = next;
-        }
-        node = prev;
-        return node;
-    }
 }
