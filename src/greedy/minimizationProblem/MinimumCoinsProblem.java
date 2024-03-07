@@ -1,10 +1,11 @@
-package greedy;
+package greedy.minimizationProblem;
 
 import java.util.Arrays;
 
 public class MinimumCoinsProblem {
+
     public static void main(String[] args) {
-        int[] coinDenominations = {25, 10, 5, 1};
+        int[] coinDenominations = {25, 10, 5};
         int amount = 63;
         int[] result = makeChange(coinDenominations, amount);
         System.out.println("Minimum coins needed: " + Arrays.toString(result));
