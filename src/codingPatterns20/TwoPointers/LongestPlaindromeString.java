@@ -2,45 +2,6 @@ package codingPatterns20.TwoPointers;
 
 public class LongestPlaindromeString {
 
-    public static String longestPalindrome(String s) {
-        if (s == null || s.length() < 1) {
-            return "";
-        }
-
-        int n = s.length();
-        boolean[][] dp = new boolean[n][n];
-        int start = 0;
-        int maxLength = 1;
-
-        // All substrings of length 1 are palindromes
-        for (int i = 0; i < n; i++) {
-            dp[i][i] = true;
-        }
-
-        // Check substrings of length 2
-        for (int i = 0; i < n - 1; i++) {
-            if (s.charAt(i) == s.charAt(i + 1)) {
-                dp[i][i + 1] = true;
-                start = i;
-                maxLength = 2;
-            }
-        }
-
-        // Check substrings of length 3 or more
-        for (int length = 3; length <= n; length++) {
-            for (int i = 0; i <= n - length; i++) {
-                int j = i + length - 1;
-                if (dp[i + 1][j - 1] && s.charAt(i) == s.charAt(j)) {
-                    dp[i][j] = true;
-                    start = i;
-                    maxLength = length;
-                }
-            }
-        }
-
-        return s.substring(start, start + maxLength);
-    }
-
     public static void main(String[] args) {
         String input = "babad";
         String result = longestPalindrome(input);
@@ -48,4 +9,27 @@ public class LongestPlaindromeString {
         System.out.println("Longest palindrome substring: " + result);
     }
 
+    public static String longestPalindrome(String s) {
+        if (s == null || s.length() < 1) return "";
+
+        int start = 0, end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int len1 = expandAroundCenter(s, i, i); // For odd length palindromes
+            int len2 = expandAroundCenter(s, i, i + 1); // For even length palindromes
+            int len = Math.max(len1, len2);
+            if (len > end - start) {
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
+            }
+        }
+        return s.substring(start, end + 1);
+    }
+
+    private static int expandAroundCenter(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        return right - left - 1;
+    }
 }

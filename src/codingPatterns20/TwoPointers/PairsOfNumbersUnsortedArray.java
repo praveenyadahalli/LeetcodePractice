@@ -4,8 +4,8 @@ import java.util.*;
 
 public class PairsOfNumbersUnsortedArray {
     public static void main(String[] args) {
-        int arr[]={5,2,3,8,3,9,2};
-        int k=11;
+        int arr[]={3,5,2,8,11};
+        int k=10;
         for (int[] pair:unsortedPairs(arr,k)){
             System.out.println(pair[0]+" "+pair[1]);
         }
@@ -16,9 +16,9 @@ public class PairsOfNumbersUnsortedArray {
         for(int i=0;i<arr.length;i++){
             int compliment=k-arr[i];
             if(map.containsKey(compliment)){
-                list.add(new int[]{compliment,arr[i]});
+                list.add(new int[]{arr[i],compliment});
             }
-            map.put(compliment,arr[i]);
+            map.put(arr[i],compliment);
         }
         return list;
     }
